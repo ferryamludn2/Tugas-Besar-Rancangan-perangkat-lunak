@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Inventory</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .inventory-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            min-height: 100vh;
+            margin-top: 60px; /* Adjust margin based on the height of the navbar */
+        }
+
+        .inventory-card {
+            width: 200px;
+            background-color: #f0f0f0;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .inventory-card:hover {
+            transform: scale(1.1);
+            background-color: #333; /* Darker background on hover */
+            color: white; /* Brighter text on hover */
+        }
+
+        .card-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            flex-grow: 1;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.1s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #bbb;
+        }
+
+        .nav-right {
+            margin-left: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Inventory</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <div class="nav-right">
+        <a href="#">My Inventory</a>
+        <a href="/editprofil.html">Edit Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="inventory-container">
+    <!-- Sample inventory items -->
+    <div class="inventory-card">
+        <div class="card-image">
+            <img src="../../../public/ticket.jpg" alt="Item Image">
+        </div>
+        <div class="card-info">
+            <ul class="info-list">
+                <li><strong>Pesawat:</strong> XXXX</li>
+                <li><strong>Kelas:</strong> XX X</li>
+                <li><strong>Kursi :</strong> XX</li>
+                <li><strong>Harga :</strong> Rp. XXXXXX</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="inventory-card">
+        <div class="card-image">
+            <img src="../../../public/ticket.jpg" alt="Item Image">
+        </div>
+        <div class="card-info">
+            <ul class="info-list">
+                <li><strong>Pesawat:</strong> XXXX</li>
+                <li><strong>Kelas:</strong> XX X</li>
+                <li><strong>Kursi :</strong> XX</li>
+                <li><strong>Harga :</strong> Rp. XXXXXX</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">Pesan Tiket Pesawat TravelOKE</footer>
+
+</body>
+</html>

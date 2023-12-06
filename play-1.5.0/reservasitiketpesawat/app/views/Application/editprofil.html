@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .edit-profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin-top: 60px; /* Adjust margin based on the height of the navbar */
+            flex-direction : row;
+        }
+
+        .profile-card {
+            width: 400px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display:flex;
+            flex-direction:row;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+        }
+
+        .profile-card:hover{
+            transform: scale(1.1);
+            background-color: #333; /* Darker background on hover */
+            color: white; /* Brighter text on hover */
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #bbb;
+        }
+
+        .nav-right {
+            margin-left: auto;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Edit Profile</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <div class="nav-right">
+        <a href="/myinventory.html">My Inventory</a>
+        <a href="#">Edit Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<br><br>
+
+
+
+<div class="edit-profile-container">
+    <div class="profile-card">
+        <div class="profile-photo">
+            <img src="../../../public/profile.jpg" alt="Profile Photo">
+        </div>
+        <div class="profile-info">
+            <ul class="info-list">
+                <li><strong>Name:</strong> ${pembeli.nama} </li>
+                <li><strong>Email:</strong> ${pembeli.email}</li>
+                <li><strong>Telefon:</strong> ${pembeli.notelp}</li>
+                <li><strong>Username:</strong> ${pembeli.username}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">Pesan Tiket Pesawat TravelOKE</footer>
+
+</body>
+</html>

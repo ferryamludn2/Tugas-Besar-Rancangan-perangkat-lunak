@@ -4,6 +4,14 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /test1.html                             Application.test1
+GET     /editprofil.html                        Application.editprofil
+GET     /myinventory.html                        Application.myinventory
+
+
+# Adm
+
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -3,9 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Header Transition</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition: left 0.5s ease-in-out;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 100px; /* Adjust the margin based on your design */
+        }
+
+        .card {
+            width: 200px;
+            height: 250px;
+            background-color: #f0f0f0;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+            border-radius:10px ;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            backdrop-filter: blur(8px);
+            background-color:black;
+            color:white;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.1s ease-in-out; /* Add transition for color change */
+        }
+
+        nav a:hover {
+            color: #bbb; /* Darker color on hover */
+        }
+
+        .nav-right {
+            margin-left: auto; /* Push the links to the right */
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        p{
+            text-align:center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Halaman User</h1>
+
+<br><br><br><br><br>
+<h1 style="text-align:center;color:white; ">Selamat Datang, ${pembeli.nama}</h1>
+<div class="cards">
+    <div class="card">
+        <h2>Cari Pesawat</h2>
+        <p>Cari Pesawatmu sesuai dengan kebutuhanmu </p>
+    </div>
+    <div class="card">
+        <h2>Menu Lain</h2>
+        <p>Dalam Tahap Pembangunan</p>
+        <p>Coming Soon</p>
+    </div>
+    <div class="card">
+        <h2>Menu Lain</h2>
+        <p>Dalam Tahap Pembangunan</p>
+        <p>Coming Soon</p>
+    </div>
+    <div class="card">
+        <h2>Menu Lain</h2>
+        <p>Dalam Tahap Pembangunan</p>
+        <p>Coming Soon</p>
+    </div>
+    <div class="card">
+        <h2>Menu Lain</h2>
+        <p>Dalam Tahap Pembangunan</p>
+        <p>Coming Soon</p>
+    </div>
+</div>
+
+<footer class="footer">Pesan Tiket Pesawat TravelOKE</footer>
+
+<nav>
+    <a href="#">Home</a>
+    <div class="nav-right">
+        <a href="/myinventory.html">My Inventory</a>
+        <a href="/editprofil.html">Edit Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<script>
+    // JavaScript to add transition to the header
+    window.addEventListener('scroll', function () {
+        var header = document.getElementById('header');
+        header.style.left = window.scrollY + 'px';
+    });
+</script>
+
 </body>
 </html>

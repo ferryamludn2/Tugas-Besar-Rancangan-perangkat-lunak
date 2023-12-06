@@ -3,9 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Home Page</title>
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+        }
+
+        header, footer {
+            background-color: black;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            padding: 0.5em;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #222;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 250px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            background-color: black;
+            color: white;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 1em;
+        }
+
+        .card-content:hover {
+            padding: 1em;
+            color:white;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            text-align:center;
+            
+        }
+        
+
+        .card-description {
+            color: black;
+            text-align:justify;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        .card-description:hover{
+            color:white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Ini halaman admin</h1>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <header>
+        <h1>Welcome to Homepage, ${pembeli.nama}</h1>
+       
+    </header>
+    <br><br><br>
+    <div class="container">
+        <a href="/admin/Control/">
+            <div class="card">
+                <img src="../../public/update4.jpg" alt="Card Image">
+                <div class="card-content">
+                    <h2 class="card-title">Atur Data</h2>
+                    <p class="card-description">Mengatur data data yang berada dalam database pemesanan tiket pesawat</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/airplane/list">
+            <div class="card">
+                <img src="../../public/update5.png" alt="Card Image">
+                <div class="card-content">
+                    <h2 class="card-title">Update Ketersediaan Pesawat</h2>
+                    <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="/tickets/list">
+            <div class="card">
+                <img src="../../public/update.png" alt="Card Image">
+                <div class="card-content">
+                    <h2 class="card-title">Update Harga Tiket</h2>
+                    <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+   
+
+    <footer>
+        <p>Pesan Tiket Pesawat TravelOKE</p>
+    </footer>
+
 </body>
 </html>
