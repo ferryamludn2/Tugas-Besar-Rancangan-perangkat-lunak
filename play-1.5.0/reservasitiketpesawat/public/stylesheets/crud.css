@@ -1,0 +1,228 @@
+/** Administration area **/
+
+#crud {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 90%;
+    color: #111;
+	height:1000px;
+	position:relative;
+
+}
+
+/** Header **/
+
+#crud #crudHeader {
+    background: #3498db;
+    padding: 15px 20px;
+}
+
+#crud #crudHeader h1 {
+    margin: 0;
+    font-weight: normal;
+    color: #fff;
+}
+
+#crud #crudHeader h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/** Breadcrumb **/
+
+#crudBreadcrumb {
+    padding: 10px 20px;
+    font-size: 80%;
+    border-bottom: 1px solid #ddd;
+    background: #ecf0f1;
+}
+
+#crudBreadcrumb ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#crudBreadcrumb li {
+    display: inline;
+}
+
+#crudBreadcrumb a {
+    color: #3498db;
+}
+
+#crudBreadcrumb li:last-child a {
+    color: #777;
+    text-decoration: none;
+}
+
+/** Flash message **/
+
+.crudFlash {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #fff;
+}
+
+.flashError {
+    background: #e74c3c;
+}
+
+.flashSuccess {
+    background: #27ae60;
+}
+
+/** Content **/
+
+#crud #crudContent {
+    padding: 20px;
+}
+
+#crud #crudContent h2 {
+    color: #333;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#crud #crudContent a {
+    color: #3498db;
+}
+
+/** Tables **/
+
+#crud #crudContent table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background: #fff;
+}
+
+#crud #crudContent table thead tr {
+    background: #3498db;
+    color: #fff;
+}
+
+#crud #crudContent table th {
+    text-align: left;
+    padding: 10px 5px;
+}
+
+#crud #crudContent table th a {
+    color: #fff;
+}
+
+#crud #crudContent table th {
+    border-bottom: 2px solid #ddd;
+}
+
+#crud #crudContent table td {
+    text-align: left;
+    padding: 8px 5px;
+}
+
+#crud #crudContent table td {
+    border-bottom: 1px solid #eee;
+}
+
+#crud #crudContent table tr.even {
+    background: #f9f9f9;
+}
+
+#crud #crudContent table tr:last-child td {
+    border-bottom: 2px solid #ddd;
+}
+
+.crudSortedAsc:after {
+    content: '▲';
+}
+
+.crudSortedDesc:after {
+    content: '▼';
+}
+
+/** Forms **/
+
+form {
+    margin: 0;
+}
+
+input,
+textarea,
+select {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    padding: 8px;
+}
+
+.objectForm {
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.crudField {
+    position: relative;
+}
+
+.crudField .error {
+    color: #c00;
+    padding-left: 10px;
+    position: absolute;
+    top: 10px;
+    font-size: 80%;
+}
+
+.crudField .hasError {
+    border: 1px solid #c00;
+}
+
+.crudField select[multiple] {
+    max-height: 100px;
+}
+
+.crudField .crudHelp {
+    font-size: 80%;
+    color: #e90a0a;
+    display: inline;
+    margin-top: 5px;
+}
+
+form .currentAttachment {
+    display: block;
+    font-size: 80%;
+    margin-top: 5px;
+}
+
+form .removeAttachment {
+    display: block;
+    font-size: 80%;
+    margin-top: 5px;
+    color: #c00;
+}
+
+/** Footer **/
+
+#crud #crudFooter {
+    font-size: 80%;
+    color: #aaa;
+    padding: 20px;
+}
