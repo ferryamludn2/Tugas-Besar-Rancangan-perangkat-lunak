@@ -1,0 +1,358 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - mengupdate ketersediaan pesawat - Scenario</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		NyobaBaru	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="UseCaseDiagram_dYAELDGGAqDIlQu2.html" class="PageParentTitle">Sistem Reservasi Pesawat Online  : System</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="UseCaseDiagram_dYAELDGGAqDIlQu2.html" class="PageParentTitle">mengupdate ketersediaan pesawat : Use Case</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Sequence Diagram - mengupdate ketersediaan pesawat - Scenario		</span>
+<a onclick="javascript: showVpLink('projecttiketpesawatfadhilferry.vpp://diagram/GMX1rDGGAqDIlRpm', 'mengupdate ketersediaan pesawat - Scenario\nprojecttiketpesawatfadhilferry.vpp://diagram/GMX1rDGGAqDIlRpm', 'mengupdate ketersediaan pesawat - Scenario', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|2.0|140.0|901.0|60.0|InteractionOperand_VMX1rDGGAqDIlRqA.html|InteractionOperand_VMX1rDGGAqDIlRqA.html|lMX1rDGGAqDIlRp_" id="optionlMX1rDGGAqDIlRp_">if : Interaction Operand</option>
+<option value="shape|2.0|200.0|901.0|72.0|InteractionOperand_NMX1rDGGAqDIlRqJ.html|InteractionOperand_NMX1rDGGAqDIlRqJ.html|NMX1rDGGAqDIlRqI" id="optionNMX1rDGGAqDIlRqI">else if : Interaction Operand</option>
+<option value="shape|2.0|380.0|901.0|60.0|InteractionOperand_TMX1rDGGAqDIlRqf.html|InteractionOperand_TMX1rDGGAqDIlRqf.html|TMX1rDGGAqDIlRqe" id="optionTMX1rDGGAqDIlRqe">if : Interaction Operand</option>
+<option value="shape|2.0|440.0|901.0|72.0|InteractionOperand_bMX1rDGGAqDIlRqo.html|InteractionOperand_bMX1rDGGAqDIlRqo.html|rMX1rDGGAqDIlRqn" id="optionrMX1rDGGAqDIlRqn">else if : Interaction Operand</option>
+<option value="shape|2.0|122.0|901.0|150.0|CombinedFragment_lMX1rDGGAqDIlRp9.html|CombinedFragment_lMX1rDGGAqDIlRp9.html|FMX1rDGGAqDIlRp8" id="optionFMX1rDGGAqDIlRp8">if jika menakan tombol "+" : Combined Fragment</option>
+<option value="shape|2.0|362.0|901.0|150.0|CombinedFragment_jMX1rDGGAqDIlRqc.html|CombinedFragment_jMX1rDGGAqDIlRqc.html|jMX1rDGGAqDIlRqb" id="optionjMX1rDGGAqDIlRqb">if jika "Ya" : Combined Fragment</option>
+<option value="shape|829.0|62.0|8.0|460.0|Activation_pMX1rDGGAqDIlRpw.html|Activation_pMX1rDGGAqDIlRpw.html|pMX1rDGGAqDIlRpv" id="optionpMX1rDGGAqDIlRpv">Activation : Activation</option>
+<option value="shape|783.0|2.0|100.0|35.0|InteractionLifeLine_JMX1rDGGAqDIlRpt.html|InteractionLifeLine_JMX1rDGGAqDIlRpt.html|JMX1rDGGAqDIlRps" id="optionJMX1rDGGAqDIlRps">Sistem Reservasi Pesawat Online  : Lifeline</option>
+<option value="shape|22.0|2.0|100.0|35.0|InteractionActor_xMX1rDGGAqDIlRpq.html|InteractionActor_xMX1rDGGAqDIlRpq.html|xMX1rDGGAqDIlRpp" id="optionxMX1rDGGAqDIlRpp">Admin : Actor</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/mengupdate_ketersediaan_pesawat_Scenario.png" usemap="#diagram_map" class="Image" width="907" height="556"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="66.0, 55.0, 66.0, 69.0, 839.0, 69.0, 839.0, 55.0" coords2="66.0, 55.0, 66.0, 69.0, 839.0, 69.0, 839.0, 55.0" shape="poly" alt="1: menakan tombol update ketersediaan kursi pesawat yang dipilih:Message" id="areadiagram_map_ZMX1rDGGAqDIlRp1_default" href="Message_pMX1rDGGAqDIlRpy.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 55.0, 66.0, 69.0, 839.0, 69.0, 839.0, 55.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menakan tombol update ketersediaan kursi pesawat yang dipilih/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 55.0, 66.0, 69.0, 839.0, 69.0, 839.0, 55.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 85.0, 66.0, 99.0, 839.0, 99.0, 839.0, 85.0" coords2="66.0, 85.0, 66.0, 99.0, 839.0, 99.0, 839.0, 85.0" shape="poly" alt="2: menampilkan tampilan untuk menaikkan atau mengurangi  kursi yang tersedia pada pesawat:Message" id="areadiagram_map_FMX1rDGGAqDIlRp6_default" href="Message_5MX1rDGGAqDIlRp3.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 85.0, 66.0, 99.0, 839.0, 99.0, 839.0, 85.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menampilkan tampilan untuk menaikkan atau mengurangi  kursi yang tersedia pada pesawat/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 85.0, 66.0, 99.0, 839.0, 99.0, 839.0, 85.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 175.0, 66.0, 189.0, 839.0, 189.0, 839.0, 175.0" coords2="66.0, 175.0, 66.0, 189.0, 839.0, 189.0, 839.0, 175.0" shape="poly" alt="3.1: menambahkan kuantitas kursi yang kosong untuk sementara:Message" id="areadiagram_map_1MX1rDGGAqDIlRqG_default" href="Message_1MX1rDGGAqDIlRqD.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 175.0, 66.0, 189.0, 839.0, 189.0, 839.0, 175.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menambahkan kuantitas kursi yang kosong untuk sementara/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 175.0, 66.0, 189.0, 839.0, 189.0, 839.0, 175.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 235.0, 66.0, 249.0, 839.0, 249.0, 839.0, 235.0" coords2="66.0, 235.0, 66.0, 249.0, 839.0, 249.0, 839.0, 235.0" shape="poly" alt="4.1: mengurangi kuantitas kursi yang kosong untuk sementara:Message" id="areadiagram_map_tMX1rDGGAqDIlRqP_default" href="Message_tMX1rDGGAqDIlRqM.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 235.0, 66.0, 249.0, 839.0, 249.0, 839.0, 235.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/mengurangi kuantitas kursi yang kosong untuk sementara/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 235.0, 66.0, 249.0, 839.0, 249.0, 839.0, 235.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 295.0, 66.0, 309.0, 839.0, 309.0, 839.0, 295.0" coords2="66.0, 295.0, 66.0, 309.0, 839.0, 309.0, 839.0, 295.0" shape="poly" alt="5: menekan tombol update:Message" id="areadiagram_map_9MX1rDGGAqDIlRqU_default" href="Message_dMX1rDGGAqDIlRqR.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 295.0, 66.0, 309.0, 839.0, 309.0, 839.0, 295.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menekan tombol update/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 295.0, 66.0, 309.0, 839.0, 309.0, 839.0, 295.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 325.0, 66.0, 339.0, 839.0, 339.0, 839.0, 325.0" coords2="66.0, 325.0, 66.0, 339.0, 839.0, 339.0, 839.0, 325.0" shape="poly" alt="6: menampilkan prompt "Apakah anda yakin?":Message" id="areadiagram_map_DMX1rDGGAqDIlRqZ_default" href="Message_DMX1rDGGAqDIlRqW.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 325.0, 66.0, 339.0, 839.0, 339.0, 839.0, 325.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menampilkan prompt &#x22;Apakah anda yakin?&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 325.0, 66.0, 339.0, 839.0, 339.0, 839.0, 325.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 415.0, 66.0, 429.0, 839.0, 429.0, 839.0, 415.0" coords2="66.0, 415.0, 66.0, 429.0, 839.0, 429.0, 839.0, 415.0" shape="poly" alt="7.1: menambahkan atau mengurangi kuantitas kursi yang kosong ke sistem secara permanen:Message" id="areadiagram_map_LMX1rDGGAqDIlRql_default" href="Message_zMX1rDGGAqDIlRqi.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 415.0, 66.0, 429.0, 839.0, 429.0, 839.0, 415.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/menambahkan atau mengurangi kuantitas kursi yang kosong ke sistem secara permanen/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 415.0, 66.0, 429.0, 839.0, 429.0, 839.0, 415.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="66.0, 475.0, 66.0, 489.0, 839.0, 489.0, 839.0, 475.0" coords2="66.0, 475.0, 66.0, 489.0, 839.0, 489.0, 839.0, 475.0" shape="poly" alt="8.1: mengembalikan ke halaman update ketersediaan kursi:Message" id="areadiagram_map_HMX1rDGGAqDIlRqu_default" href="Message_7MX1rDGGAqDIlRqr.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','66.0, 475.0, 66.0, 489.0, 839.0, 489.0, 839.0, 475.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/mengembalikan ke halaman update ketersediaan kursi/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '66.0, 475.0, 66.0, 489.0, 839.0, 489.0, 839.0, 475.0')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 140, 903, 212.0" coords2="2, 140, 903, 212.0" shape="rect" alt="if:Interaction Operand" id="areadiagram_map_lMX1rDGGAqDIlRp__default" href="InteractionOperand_VMX1rDGGAqDIlRqA.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 140, 903, 200',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika menakan tombol &#x22;+&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 140, 903, 200')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 200, 903, 284.0" coords2="2, 200, 903, 284.0" shape="rect" alt="else if:Interaction Operand" id="areadiagram_map_NMX1rDGGAqDIlRqI_default" href="InteractionOperand_NMX1rDGGAqDIlRqJ.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 200, 903, 272',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika menekan tombol &#x22;-&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 200, 903, 272')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 380, 903, 452.0" coords2="2, 380, 903, 452.0" shape="rect" alt="if:Interaction Operand" id="areadiagram_map_TMX1rDGGAqDIlRqe_default" href="InteractionOperand_TMX1rDGGAqDIlRqf.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 380, 903, 440',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika &#x22;Ya&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 380, 903, 440')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 440, 903, 524.0" coords2="2, 440, 903, 524.0" shape="rect" alt="else if:Interaction Operand" id="areadiagram_map_rMX1rDGGAqDIlRqn_default" href="InteractionOperand_bMX1rDGGAqDIlRqo.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 440, 903, 512',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika &#x22;Tidak&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 440, 903, 512')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 122, 903, 284.0" coords2="2, 122, 903, 284.0" shape="rect" alt="if jika menakan tombol "+":Combined Fragment" id="areadiagram_map_FMX1rDGGAqDIlRp8_default" href="CombinedFragment_lMX1rDGGAqDIlRp9.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 122, 903, 272',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika menakan tombol &#x22;+&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 122, 903, 272')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2, 362, 903, 524.0" coords2="2, 362, 903, 524.0" shape="rect" alt="if jika "Ya":Combined Fragment" id="areadiagram_map_jMX1rDGGAqDIlRqb_default" href="CombinedFragment_jMX1rDGGAqDIlRqc.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','2, 362, 903, 512',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/jika &#x22;Ya&#x22;/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '2, 362, 903, 512')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="829, 62, 837, 522" coords2="829, 62, 837, 522" shape="rect" alt="Activation:Activation" id="areadiagram_map_pMX1rDGGAqDIlRpv_default" href="Activation_pMX1rDGGAqDIlRpw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="783, 2, 883, 49.0" coords2="783, 2, 883, 49.0" shape="rect" alt="Sistem Reservasi Pesawat Online :Lifeline" id="areadiagram_map_JMX1rDGGAqDIlRps_default" href="InteractionLifeLine_JMX1rDGGAqDIlRpt.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','783, 2, 883, 37',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Scenario/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '783, 2, 883, 37')" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="22, 2, 122, 49.0" coords2="22, 2, 122, 49.0" shape="rect" alt="Admin:Actor" id="areadiagram_map_xMX1rDGGAqDIlRpp_default" href="InteractionActor_xMX1rDGGAqDIlRpq.html" onmouseover="storeReferenceAndSubdiagramInfos('diagram','22, 2, 122, 37',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('null/Scenario/GenericModel'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('diagram', '22, 2, 122, 37')" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InteractionOperand.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InteractionOperand.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionOperand_VMX1rDGGAqDIlRqA.html" class="ItemLink">if : Interaction Operand</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InteractionOperand.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InteractionOperand.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionOperand_NMX1rDGGAqDIlRqJ.html" class="ItemLink">else if : Interaction Operand</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InteractionOperand.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InteractionOperand.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionOperand_TMX1rDGGAqDIlRqf.html" class="ItemLink">if : Interaction Operand</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/InteractionOperand.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/InteractionOperand.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionOperand_bMX1rDGGAqDIlRqo.html" class="ItemLink">else if : Interaction Operand</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/CombinedFragmentAlt.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/CombinedFragmentAlt.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="CombinedFragment_lMX1rDGGAqDIlRp9.html" class="ItemLink">if jika menakan tombol "+" : Combined Fragment</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/CombinedFragmentAlt.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/CombinedFragmentAlt.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="CombinedFragment_jMX1rDGGAqDIlRqc.html" class="ItemLink">if jika "Ya" : Combined Fragment</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_pMX1rDGGAqDIlRpw.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_JMX1rDGGAqDIlRpt.html" class="ItemLink">Sistem Reservasi Pesawat Online  : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionActor_xMX1rDGGAqDIlRpq.html" class="ItemLink">Admin : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		NyobaBaru	</div>
+</body>
+</html>
